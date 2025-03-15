@@ -7,3 +7,5 @@
 
 ## Ссылки на используемые материалы:
 [Документация Python](https://www.python.org/doc/)
+[Генератор в Python](https://habr.com/ru/articles/866616/)
+[Встроенные функции map, filter и reduce в Python] (https://pythonist.ru/map-filter-i-reduce-funkczii-v-python/?ysclid=m8a3f7wjpm532940588)
