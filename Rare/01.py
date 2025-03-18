@@ -1,28 +1,33 @@
+# Функция, которая применяет переданную функцию `func` к значению `value` `n` раз
 def apply_function_n_times(func, n, value):
-    for _ in range(n):
-        value = func(value)
-    return value
+    for _ in range(n):  # Цикл, который выполнится `n` раз
+        value = func(value)  # Применение функции `func` к текущему значению `value`
+    return value  # Возвращение итогового значения после `n` применений функции
 
+# Генератор, который фильтрует элементы последовательности, оставляя только те,  иммиикоторые изменились значительно после применения функции `func` `n` раз
 def significant_change_generator(sequence, func, n, threshold=1):
-    for item in sequence:
-        new_item = apply_function_n_times(func, n, item)
-        if abs(new_item - item) >= threshold:
-            yield new_item
+    for item in sequence:  # Проход по каждому элементу в последовательности
+        new_item = apply_function_n_times(func, n, item)  # Применение функции `func` `n` раз к текущему элементу
+        if abs(new_item - item) >= threshold:  # Проверка, изменилось ли значение значительно
+            yield new_item  # Если да, возвращение нового значения как часть генератора
 
 # Пример использования:
 
-# Функция, которую будем применять
+# Функция, которая будет применяться (возведение числа в квадрат)
 def square(x):
     return x ** 2
 
 # Последовательность чисел
 sequence = [1, 2, 3, 4, 5]
 
-# Применяем функцию square к каждому элементу последовательности 2 раза
+# Количество раз, которое нужно применить функцию `square` к каждому элементу
 n = 2
-threshold = 10  # Порог значительного изменения
 
-# Фильтруем элементы, которые изменились значительно
+# Порог значительного изменения (разница между исходным и новым значением должна быть >= threshold)
+threshold = 10
+
+# Фильтрация элементов последовательности, оставляя только те, которые изменились значительно
 result = list(significant_change_generator(sequence, square, n, threshold))
 
+# Вывод результата
 print(result)
